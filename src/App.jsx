@@ -31,15 +31,15 @@ import './styles/components/cards.css';
 import './styles/components/modals.css';
 
 // Protected Route Component
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children }) => {
   const session = getCurrentSession();
-  return session ? <>{children}</> : <Navigate to="/login" replace />;
+  return session ? children : <Navigate to="/login" replace />;
 };
 
 // Public Route Component (redirect to dashboard if already logged in)
-const PublicRoute = ({ children }: { children: React.ReactNode }) => {
+const PublicRoute = ({ children }) => {
   const session = getCurrentSession();
-  return !session ? <>{children}</> : <Navigate to="/" replace />;
+  return !session ? children : <Navigate to="/" replace />;
 };
 
 // Main App Component
