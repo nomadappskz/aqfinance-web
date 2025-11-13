@@ -1,4 +1,4 @@
-import { getSales, getProducts, getExpenses } from './storage';
+import { getSales, getProducts, getExpenses } from './index';
 
 export const exportData = (type: 'sales' | 'products' | 'expenses'): void => {
   let data: any;

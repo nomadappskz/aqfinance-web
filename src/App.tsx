@@ -7,21 +7,20 @@ import Layout from './components/Layout/Layout';
 import Sidebar from './components/Layout/Sidebar';
 
 // Auth Components
-import Login from './components/Auth/Login';
+import Login from './components/auth/Login';
 
-// Page Components
-import Dashboard from './components/Dashboard/Dashboard';
-import Sales from './components/Sales/Sales';
-import Expenses from './components/Expenses/Expenses';
-import Reports from './components/Reports/Reports';
-import Settings from './components/Settings/Settings';
-import CashRegister from './components/CashRegister/CashRegister';
+// Используем named imports для существующих компонентов
+import { Dashboard } from './components/Dashboard';
+import { SalesInterface } from './components/sales/SalesInterface';
+import { ExpensesManagement } from './components/settings/ExpensesManagement';
+import { OwnerSettings } from './components/settings/OwnerSettings';
+import { LoginForm } from './components/LoginForm';
 
-// Product Management Components
-import ProductList from './components/Products/ProductList';
-
-// User Management Components
-import UserList from './components/Users/UserList';
+// Создадим простые заглушки для недостающих компонентов
+const ProductList = () => <div className="page-container"><h1>📦 Товары (скоро)</h1></div>;
+const UserList = () => <div className="page-container"><h1>👥 Сотрудники (скоро)</h1></div>;
+const Reports = () => <div className="page-container"><h1>📊 Отчеты (скоро)</h1></div>;
+const CashRegister = () => <div className="page-container"><h1>🧾 Касса (скоро)</h1></div>;
 
 // Styles
 import './styles/global.css';
@@ -29,6 +28,7 @@ import './styles/components/buttons.css';
 import './styles/components/forms.css';
 import './styles/components/cards.css';
 import './styles/components/modals.css';
+import './styles/components/Layout/Sidebar.css';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -36,19 +36,17 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return session ? <>{children}</> : <Navigate to="/login" replace />;
 };
 
-// Public Route Component (redirect to dashboard if already logged in)
+// Public Route Component
 const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const session = getCurrentSession();
   return !session ? <>{children}</> : <Navigate to="/" replace />;
 };
 
-// Main App Component
 function App() {
   return (
     <Router>
       <div className="app">
         <Routes>
-          {/* Public Routes */}
           <Route 
             path="/login" 
             element={
@@ -57,8 +55,6 @@ function App() {
               </PublicRoute>
             } 
           />
-          
-          {/* Protected Routes */}
           <Route 
             path="/" 
             element={
@@ -67,32 +63,15 @@ function App() {
               </ProtectedRoute>
             }
           >
-            {/* Dashboard */}
             <Route index element={<Dashboard />} />
-            
-            {/* Sales */}
-            <Route path="sales" element={<Sales />} />
-            
-            {/* Expenses */}
-            <Route path="expenses" element={<Expenses />} />
-            
-            {/* Reports */}
+            <Route path="sales" element={<SalesInterface />} />
+            <Route path="expenses" element={<ExpensesManagement />} />
             <Route path="reports" element={<Reports />} />
-            
-            {/* Settings */}
-            <Route path="settings" element={<Settings />} />
-            
-            {/* Cash Register */}
+            <Route path="settings" element={<OwnerSettings />} />
             <Route path="cash-register" element={<CashRegister />} />
-            
-            {/* Product Management */}
             <Route path="products" element={<ProductList />} />
-            
-            {/* User Management */}
             <Route path="users" element={<UserList />} />
           </Route>
-          
-          {/* Catch all route */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

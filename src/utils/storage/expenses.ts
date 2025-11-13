@@ -1,17 +1,6 @@
-import { Expense } from './storage';
+import { Expense } from './types';
+import { getItem, setItem } from './base';
 import { updateCashBalance } from './cash';
-
-const getItem = (key: string, defaultValue: any = []) => {
-  try {
-    return JSON.parse(localStorage.getItem(key) || '') || defaultValue;
-  } catch {
-    return defaultValue;
-  }
-};
-
-const setItem = (key: string, data: any) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
 
 export const saveExpense = (expenseData: Omit<Expense, 'id' | 'timestamp'>): Expense => {
   const expenses = getExpenses();

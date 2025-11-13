@@ -1,16 +1,5 @@
-import { CompanySettings } from './storage';
-
-const getItem = (key: string, defaultValue: any = []) => {
-  try {
-    return JSON.parse(localStorage.getItem(key) || '') || defaultValue;
-  } catch {
-    return defaultValue;
-  }
-};
-
-const setItem = (key: string, data: any) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
+import { CompanySettings } from './types';
+import { getItem, setItem } from './base';
 
 export const getCompanySettings = (): CompanySettings => {
   return getItem('companySettings', {

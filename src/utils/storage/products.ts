@@ -1,24 +1,13 @@
-import { Product } from './storage';
+import { Product } from './types';
+import { getItem, setItem } from './base';
 
-const getItem = (key: string, defaultValue: any = []) => {
-  try {
-    return JSON.parse(localStorage.getItem(key) || '') || defaultValue;
-  } catch {
-    return defaultValue;
-  }
-};
-
-const setItem = (key: string, data: any) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
-
-export const saveProduct = (productData: Omit<Product, 'id' | 'createdAt'> & { id?: string }): Product => {
+export const saveProduct = (productData: Omit<Product, 'id' | 'createdAt'> & { id?: string; createdAt?: string }): Product => {
   const products = getProducts();
   const product: Product = {
     id: productData.id || Date.now().toString(),
     name: productData.name,
-    price: productData.price,
-    category: productData.category,
+    price: parseFloat(productData.price.toString()),
+    category: productData.category || 'Разное',
     createdAt: productData.createdAt || new Date().toISOString()
   };
   

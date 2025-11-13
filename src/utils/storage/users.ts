@@ -1,16 +1,5 @@
-import { User } from './storage';
-
-const getItem = (key: string, defaultValue: any = []) => {
-  try {
-    return JSON.parse(localStorage.getItem(key) || '') || defaultValue;
-  } catch {
-    return defaultValue;
-  }
-};
-
-const setItem = (key: string, data: any) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
+import { User } from './types';
+import { getItem, setItem } from './base';
 
 export const getUsers = (): User[] => {
   const users = getItem('users');
@@ -48,7 +37,7 @@ export const getUserByUsername = (username: string): User | undefined => {
   return getUsers().find(user => user.username === username);
 };
 
-export const saveUser = (userData: Omit<User, 'createdAt'> & { password?: string }): User => {
+export const saveUser = (userData: Omit<User, 'createdAt'> & { password?: string; createdAt?: string }): User => {
   const users = getUsers();
   const existingIndex = users.findIndex(u => u.username === userData.username);
   

@@ -1,17 +1,6 @@
-import { Sale, SaleItem } from './storage';
+import { Sale } from './types';
+import { getItem, setItem } from './base';
 import { updateCashBalance } from './cash';
-
-const getItem = (key: string, defaultValue: any = []) => {
-  try {
-    return JSON.parse(localStorage.getItem(key) || '') || defaultValue;
-  } catch {
-    return defaultValue;
-  }
-};
-
-const setItem = (key: string, data: any) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
 
 export const saveSale = (saleData: Omit<Sale, 'id' | 'timestamp' | 'date'>): Sale => {
   const sales = getSales();
@@ -47,4 +36,8 @@ export const getSalesByDateRange = (startDate: Date, endDate: Date): Sale[] => {
     const saleDate = new Date(sale.timestamp);
     return saleDate >= startDate && saleDate <= endDate;
   });
+};
+
+export const getDeliveryOrders = (): Sale[] => {
+  return getSales().filter(sale => sale.delivery);
 };

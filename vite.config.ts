@@ -10,5 +10,9 @@ export default defineConfig({
   build: {
     target: 'esnext',
     minify: 'esbuild'
+  },
+  // Добавь эту настройку чтобы Vite не искал tsconfig.node.json
+  define: {
+    global: 'globalThis'
   }
 })
