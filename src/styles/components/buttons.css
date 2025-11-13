@@ -1,0 +1,68 @@
+.primary-btn, .secondary-btn, .danger-btn {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.primary-btn {
+  background: #007AFF;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #0056CC;
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.danger-btn {
+  background: rgba(255, 59, 48, 0.2);
+  color: #FF3B30;
+  border: 1px solid rgba(255, 59, 48, 0.3);
+}
+
+.danger-btn:hover {
+  background: rgba(255, 59, 48, 0.3);
+}
+
+.complete-sale-btn {
+  width: 100%;
+  padding: 16px;
+  background: #30D158;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.complete-sale-btn:hover {
+  background: #20B048;
+}
+
+.remove-btn {
+  background: rgba(255, 59, 48, 0.2);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  color: #FF3B30;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 12px;
+}

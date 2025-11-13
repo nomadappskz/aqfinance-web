@@ -1,0 +1,87 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-card {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .shift-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .payment-types {
+    flex-direction: column;
+  }
+  
+  .admin-actions {
+    flex-direction: column;
+  }
+  
+  .expense-detail .expense-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .main-content {
+    padding: 10px;
+  }
+  
+  .shift-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .sales-container {
+    flex-direction: row;
+  }
+  
+  .products-section {
+    flex: 1;
+  }
+  
+  .current-check {
+    flex: 0 0 400px;
+  }
+}

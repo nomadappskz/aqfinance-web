@@ -1,0 +1,66 @@
+/* Reports Components */
+.reports-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.report-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.report-section h3 {
+  margin-bottom: 20px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.expenses-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expense-detail {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.expense-detail:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.expense-detail .expense-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.expense-detail .expense-type {
+  font-weight: 600;
+  color: #fff;
+}
+
+.expense-detail .expense-amount {
+  font-weight: 700;
+  color: #FF3B30;
+}
+
+.expense-detail .expense-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.expense-detail .expense-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
